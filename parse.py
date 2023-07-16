@@ -62,6 +62,8 @@ def get_all_flats():
 
                     response = req.json()
 
+                    all_count = response.get('count', size)
+
                     flats = response.get('flats', [])
 
                     break
