@@ -1,0 +1,16 @@
+{
+    "type": "1,2",
+    "location": "2,3",
+    "rooms": "-1,1",
+    "priceFrom": 0,
+    "priceTo": 6000000,
+    "settlement": "2.2024",
+    "notFirstFloor": 1,
+    "notLastFloor": 1,
+    "timeOnFoot": 20,
+    "flatLimit": 20,
+    "sortBy": "price",
+    "orderBy": "asc",
+    "allFlats": 1,
+    "flatPage": 1
+}
