@@ -243,18 +243,18 @@ def process_flats():
                     data_file['link'],
                     data_file['name'],
                     price_format(last_price),
-                    queue_file.get('uid'),
+                    data_file.get('uid'),
                 )
 
                 message_raw = 'Продажа %s %s\nПоследняя цена %s\n\nuid: %s' % (
                     data_file['name'],
                     data_file['link'],
                     price_format(last_price),
-                    queue_file.get('uid'),
+                    data_file.get('uid'),
                 )
 
                 result = send_telegram(
-                    uid = queue_file.get('uid'),
+                    uid = data_file.get('uid'),
                     message = message_html,
                 ) if settings.get('send_telegram_message') else just_print(
                     message = message_raw,
