@@ -125,6 +125,9 @@ def send_telegram(uid, message):
                 'id': uid,
                 'sender': settings.get('sender'),
                 'text': message,
+            },
+            headers = {
+                'token': settings.get('token'),
             }
         )
 
