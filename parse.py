@@ -66,6 +66,9 @@ def get_all_flats():
 
                     flats = response.get('flats', [])
 
+                    if not response.get('flats') and response.get('blocks'):
+                        flats = response.get('blocks', [])[0].get('flats', [])
+
                     break
                 except Exception as e:
                     time.sleep(random.uniform(1, 4))
