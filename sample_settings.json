@@ -3,5 +3,6 @@
     "sender": "yablokov",
     "await_time": 3600,
     "send_telegram_message": false,
+    "use_cron": false,
     "token": "admin"
 }

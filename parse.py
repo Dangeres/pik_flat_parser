@@ -331,8 +331,22 @@ def process_flats():
                 time.sleep(random.uniform(1, 2))
 
 
+def tick():
+    print('Начинаем получать квартиры....')
+
+    flats = get_all_flats()
+
+    print('Квартиры были получены')
+    
+    save_data_flats_queue(flats)
+    
+    print('Квартиры были обработаны')
+
+    process_flats()
+
+
 def main():
-    while True:
+    while not settings.get('use_cron', False):
         now_time = int(time.time())
 
         sleep_time = max(settings_system['time'] - now_time, 0)
@@ -341,21 +355,14 @@ def main():
 
         time.sleep(sleep_time)
 
-        print('Начинаем получать квартиры....')
-
-        flats = get_all_flats()
-
-        print('Квартиры были получены')
-        
-        save_data_flats_queue(flats)
-        
-        print('Квартиры были обработаны')
-
-        process_flats()
+        tick()
 
         settings_system['time'] = int(time.time()) + settings['await_time']
 
         jsona_system.save_json(data = settings_system, ident=4)
+
+    if settings.get('use_cron', False):
+        tick()
 
 
 if __name__ == '__main__':
